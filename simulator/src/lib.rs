@@ -1,6 +1,6 @@
 mod components;
 
-pub use components::{RegFile, RegReadError, RegWriteError};
+pub use components::{Memory, MemoryError, RegFile, RegReadError, RegWriteError};
 
 #[derive(Default)]
 pub struct Simulator;
