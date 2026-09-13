@@ -1,4 +1,4 @@
-use riscv_simulator::{RegFile, RegReadError, RegWriteError};
+use riscv_simulator::components::{RegFile, RegReadError, RegWriteError};
 
 #[test]
 fn all_registers_start_at_zero() {
@@ -25,10 +25,7 @@ fn registers_x1_to_x31_can_be_written() {
 fn x0_cannot_be_changed() {
     let mut reg_file = RegFile::default();
 
-    assert_eq!(
-        reg_file.write_reg(0, 42),
-        Err(RegWriteError::ZeroRegister)
-    );
+    assert_eq!(reg_file.write_reg(0, 42), Err(RegWriteError::ZeroRegister));
     assert_eq!(reg_file.reg_value(0), Ok(0));
 }
 
@@ -36,10 +33,7 @@ fn x0_cannot_be_changed() {
 fn reading_invalid_index_returns_error() {
     let reg_file = RegFile::default();
 
-    assert_eq!(
-        reg_file.reg_value(32),
-        Err(RegReadError::InvalidIndex(32))
-    );
+    assert_eq!(reg_file.reg_value(32), Err(RegReadError::InvalidIndex(32)));
 }
 
 #[test]

@@ -1,4 +1,4 @@
-use riscv_simulator::{Memory, MemoryError};
+use riscv_simulator::components::{Memory, MemoryError};
 
 const MEMORY_SIZE: u32 = 1024;
 
